@@ -12,6 +12,9 @@ import com.facebook.react.defaults.DefaultReactNativeHost
 import com.facebook.react.flipper.ReactNativeFlipper
 import com.facebook.soloader.SoLoader
 
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+
+
 class MainApplication : Application(), ReactApplication {
 
   override val reactNativeHost: ReactNativeHost =
@@ -19,7 +22,20 @@ class MainApplication : Application(), ReactApplication {
         override fun getPackages(): List<ReactPackage> {
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
-          return PackageList(this).packages
+            // PackageList(this).packages.add(new SplashScreenReactPackage());
+        //  return PackageList(this).packages
+
+         val packages = PackageList(this).packages
+
+        //  packages.add(SplashScreenReactPackage())
+
+         return packages
+
+          //  return listOf(
+          //    // MainReactPackage(),
+          //    SplashScreenReactPackage() // here
+          //  )
+
         }
 
         override fun getJSMainModuleName(): String = "index"

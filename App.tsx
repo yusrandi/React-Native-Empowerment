@@ -5,9 +5,10 @@
  * @format
  */
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import React, { useEffect } from 'react';
+import type { PropsWithChildren } from 'react';
 import {
+  PermissionsAndroid,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -24,13 +25,26 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import LoginScreen from './src/presentation/screens/auth/login.screen';
+import DashboardScreen from './src/presentation/screens/dashboard/dashboard.screen';
+import { getFCMToken, notificationListener, requestUserPermission } from './src/application/utils/firebase';
+
+import SplashScreen from 'react-native-splash-screen'
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import RootNavigator from './src/application/navigations/root.navigator';
+
+import { enableLatestRenderer } from 'react-native-maps';
+import AuthProvider from './src/application/context/auth.context.tsx';
+import { PaperProvider } from 'react-native-paper';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
+function Section({ children, title }: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+
   return (
     <View style={styles.sectionContainer}>
       <Text
@@ -62,38 +76,32 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  useEffect(() => {
+    PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
+    PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
+    PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION);
+    requestUserPermission()
+    getFCMToken()
+    notificationListener()
+    // setTimeout(() => {
+
+    // }, 2000)
+
+  }, [])
+
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+    <PaperProvider>
+      <AuthProvider>
+        <SafeAreaProvider style={{ flex: 1 }} >
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <RootNavigator />
+          </GestureHandlerRootView>
+        </SafeAreaProvider>
+      </AuthProvider>
+    </PaperProvider>
+  )
+
+
 }
 
 const styles = StyleSheet.create({

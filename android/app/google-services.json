@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "453495810655",
+    "firebase_url": "https://empowerment-4887e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "empowerment-4887e",
+    "storage_bucket": "empowerment-4887e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453495810655:android:855007b52648ea2a0009ea",
+        "android_client_info": {
+          "package_name": "com.empowerment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwtZFVlDXebfxYJsA4Z8_es_yPG62PhLM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
