@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, SafeAreaView, StatusBar, Image, TouchableOpacity, Alert } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { useTheme } from '@react-navigation/native';
-import { bgWomanImage, womanImage } from '../../assets';
+import { bgWomanImage, womanImage, newLogo } from '../../assets';
 import FontSize from '../../constants/FontSize';
 import Spacing from '../../constants/Spacing';
 
@@ -40,7 +40,7 @@ export default function LoginScreen({ navigation }: NativeStackScreenProps<RootS
                 barStyle='light-content'
             />
             <LinearGradient colors={['#A094E3', '#9183DE']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
-                <Image source={bgWomanImage} style={{ height: 400, resizeMode: 'contain' }} />
+                <Image source={newLogo} style={{ height: 200, resizeMode: 'contain' }} />
                 <Text style={{ fontSize: FontSize.large, opacity: 0.75, fontWeight: '900', color: colors.card, marginBottom: Spacing }} numberOfLines={1}>
                     Welcome Back
                 </Text>

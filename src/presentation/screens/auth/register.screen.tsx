@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { useTheme } from '@react-navigation/native'
-import { bgWomanImage } from '../../assets'
+import { bgWomanImage, newLogo } from '../../assets'
 import FontSize from '../../constants/FontSize'
 import Spacing from '../../constants/Spacing'
 import { DividerText, TextInputAuth } from '../../components'
@@ -45,7 +45,7 @@ export default function RegisterScreen({ navigation }: NativeStackScreenProps<Ro
                 barStyle='light-content'
             />
             <LinearGradient colors={['#E5B2CA', '#CD82DE']} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Image source={bgWomanImage} style={{ height: 400, resizeMode: 'contain' }} />
+                <Image source={newLogo} style={{ height: 200, resizeMode: 'contain' }} />
                 <Text style={{ fontSize: FontSize.large, opacity: 0.75, fontWeight: '900', color: colors.card, marginBottom: Spacing }} numberOfLines={1}>
                     Hi there!
                 </Text>

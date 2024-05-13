@@ -52,7 +52,7 @@ export default function ItemReportComponent({ item, navigation }: props) {
                             <Text style={styles.textJenis} numberOfLines={1}>
                                 {item.s3_jenis}
                             </Text>
-                            <Text style={[styles.textStatus]} numberOfLines={1}>
+                            <Text style={[styles.textStatus, { backgroundColor: item.status === "Diproses" ? "aqua" : item.status === "Ditolak" ? "red" : item.status === "Diproses" ? "aqua" : "green" }]} numberOfLines={1}>
                                 {item.status}
                             </Text>
                         </View>
@@ -75,5 +75,5 @@ const styles = StyleSheet.create({
     textTitle: { fontSize: FontSize.large, fontWeight: 'bold', color: CustomDefaultTheme.colors.text, marginBottom: Spacing },
     textDesc: { fontSize: FontSize.medium, fontFamily: Font['poppins-regular'] },
     textJenis: { marginRight: Spacing, color: 'white', fontSize: FontSize.small, fontWeight: '600', backgroundColor: CustomDefaultTheme.colors.primary, paddingHorizontal: Spacing * 2, paddingVertical: Spacing / 2, borderRadius: Spacing * 2 },
-    textStatus: { color: 'white', fontSize: FontSize.small, fontWeight: '600', backgroundColor: 'green', paddingHorizontal: Spacing * 2, paddingVertical: Spacing / 2, borderRadius: Spacing * 2 }
+    textStatus: { color: 'white', fontSize: FontSize.small, fontWeight: '600', paddingHorizontal: Spacing * 2, paddingVertical: Spacing / 2, borderRadius: Spacing * 2 }
 })

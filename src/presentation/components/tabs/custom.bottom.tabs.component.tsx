@@ -81,11 +81,11 @@ const TabItem = ({
             routeName === "home"
               ? "home"
               : routeName === "history"
-                ? "info"
+                ? "paperclip"
                 : routeName === "about"
-                  ? "wechat"
+                  ? "newspaper-o"
                   : routeName === "location"
-                    ? "bell"
+                    ? "paper-plane-o"
                     : "wechat"
           }
           size={20}
